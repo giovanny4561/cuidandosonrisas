@@ -224,7 +224,7 @@ export default function Home() {
                 decoding="async"
                 alt="Equipo Cuidando Sonrisas"
                 className="desaturated-img"
-                src="/team-group.webp"
+                src="/team-group.jpg"
                 width={1200}
                 height={800}
               />
