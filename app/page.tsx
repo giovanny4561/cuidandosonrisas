@@ -105,6 +105,7 @@ export default function Home() {
                 src="/hero.png"
                 width={800}
                 height={1000}
+                fetchPriority="high"
               />
             </div>
             <div
