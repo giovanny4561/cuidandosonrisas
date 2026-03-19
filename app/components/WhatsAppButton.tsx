@@ -7,9 +7,9 @@ export default function WhatsAppButton() {
     <FloatingWhatsApp
       phoneNumber="+573206164740"
       accountName="Cuidando Sonrisas"
-      statusMessage="Odontología oncológica especializada"
-      chatMessage="¡Hola! 👋 ¿En qué podemos ayudarte hoy?"
-      placeholder="Escribe un mensaje..."
+      statusMessage="Educación, prevención y consultoría"
+      chatMessage="¡Hola! Bienvenido/a a Cuidando Sonrisas. ¿En qué podemos ayudarte? Conferencias, consultoría para instituciones o información general."
+      placeholder="Escribe tu mensaje aquí..."
       messageDelay={1}
       notification
       notificationDelay={30}
