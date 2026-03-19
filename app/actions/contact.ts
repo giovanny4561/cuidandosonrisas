@@ -56,6 +56,7 @@ export async function sendContactEmail(
   _prev: ContactState,
   formData: FormData
 ): Promise<ContactState> {
+  try {
   // Honeypot: campo oculto que solo los bots rellenan
   const honeypot = formData.get('website') as string
   if (honeypot) {
@@ -156,4 +157,8 @@ export async function sendContactEmail(
   }
 
   return { status: 'success', message: '¡Mensaje enviado! Te responderemos en menos de 24 horas.' }
+  } catch (err) {
+    console.error('sendContactEmail unexpected error:', err)
+    return { status: 'error', message: 'Ocurrió un error inesperado. Intenta de nuevo.' }
+  }
 }

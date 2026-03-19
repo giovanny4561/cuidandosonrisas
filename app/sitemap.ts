@@ -4,7 +4,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: "https://cuidandosonrisas.co",
-      lastModified: new Date(),
+      lastModified: new Date("2026-03-19"),
       changeFrequency: "monthly",
       priority: 1,
     },

@@ -1,6 +1,6 @@
 'use client'
 
-import { useActionState } from 'react'
+import { useActionState, useState } from 'react'
 import { sendContactEmail, type ContactState } from '@/app/actions/contact'
 
 const initialState: ContactState = { status: 'idle', message: '' }
@@ -10,6 +10,19 @@ const inputClass =
 
 export default function ContactForm() {
   const [state, formAction, pending] = useActionState(sendContactEmail, initialState)
+
+  const [fields, setFields] = useState({
+    nombre: '',
+    email: '',
+    telefono: '',
+    institucion: '',
+    servicio: '',
+    mensaje: '',
+  })
+
+  const set = (field: keyof typeof fields) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
+      setFields((prev) => ({ ...prev, [field]: e.target.value }))
 
   if (state.status === 'success') {
     return (
@@ -43,6 +56,7 @@ export default function ContactForm() {
           <input
             id="nombre" name="nombre" required autoComplete="name"
             className={inputClass} placeholder="Tu nombre completo" type="text"
+            value={fields.nombre} onChange={set('nombre')}
           />
         </div>
         <div className="space-y-2">
@@ -52,6 +66,7 @@ export default function ContactForm() {
           <input
             id="email" name="email" required autoComplete="email"
             className={inputClass} placeholder="ejemplo@correo.com" type="email"
+            value={fields.email} onChange={set('email')}
           />
         </div>
         <div className="space-y-2">
@@ -59,6 +74,7 @@ export default function ContactForm() {
           <input
             id="telefono" name="telefono" autoComplete="tel"
             className={inputClass} placeholder="+57 300 000 0000" type="tel"
+            value={fields.telefono} onChange={set('telefono')}
           />
         </div>
         <div className="space-y-2">
@@ -66,6 +82,7 @@ export default function ContactForm() {
           <input
             id="institucion" name="institucion" autoComplete="organization"
             className={inputClass} placeholder="Hospital, clínica, fundación..." type="text"
+            value={fields.institucion} onChange={set('institucion')}
           />
         </div>
       </div>
@@ -74,6 +91,7 @@ export default function ContactForm() {
         <select
           id="servicio" name="servicio"
           className="w-full border-b-2 border-[#efedef] focus:border-[#6b558a] focus:outline-none p-3 bg-transparent text-sm transition-colors duration-200 min-h-[44px] cursor-pointer appearance-none"
+          value={fields.servicio} onChange={set('servicio')}
         >
           <option value="">Selecciona una opción</option>
           <option>Conferencia para profesionales de la salud</option>
@@ -89,6 +107,7 @@ export default function ContactForm() {
           className="w-full border-b-2 border-[#efedef] focus:border-[#6b558a] focus:outline-none p-3 bg-transparent text-sm transition-colors duration-200 resize-none"
           placeholder="Cuéntanos cómo podemos ayudarte..."
           rows={3}
+          value={fields.mensaje} onChange={set('mensaje')}
         />
       </div>
 
