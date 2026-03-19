@@ -3,8 +3,9 @@
 import { useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 export default function GSAPAnimations() {
   useEffect(() => {
@@ -130,7 +131,25 @@ export default function GSAPAnimations() {
       })
     })
 
-    return () => ctx.revert()
+    // ── SMOOTH ANCHOR SCROLL ───────────────────────────────────
+    const anchorLinks = document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')
+    const handleAnchorClick = (e: Event) => {
+      const anchor = e.currentTarget as HTMLAnchorElement
+      const target = document.querySelector(anchor.getAttribute('href') as string)
+      if (!target) return
+      e.preventDefault()
+      gsap.to(window, {
+        duration: 1.1,
+        scrollTo: { y: target, offsetY: 72 },
+        ease: 'power3.inOut',
+      })
+    }
+    anchorLinks.forEach((a) => a.addEventListener('click', handleAnchorClick))
+
+    return () => {
+      ctx.revert()
+      anchorLinks.forEach((a) => a.removeEventListener('click', handleAnchorClick))
+    }
   }, [])
 
   return null
