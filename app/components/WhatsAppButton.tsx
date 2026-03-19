@@ -14,7 +14,6 @@ export default function WhatsAppButton() {
       notification
       notificationDelay={30}
       notificationLoop={2}
-      allowClickAway
       allowEsc
       buttonStyle={{ bottom: '1.5rem', right: '1.5rem' }}
       chatboxStyle={{ fontFamily: 'Inter, sans-serif' }}
