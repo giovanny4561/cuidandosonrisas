@@ -553,6 +553,12 @@ export default function Home() {
           <p className="text-xs text-[#6d6475] font-medium text-center sm:text-left">
             © 2026 Cuidando Sonrisas. Todos los derechos reservados.
           </p>
+          <p className="text-xs text-[#6d6475] text-center sm:text-right">
+            Creado con ♥ por{' '}
+            <a href="https://www.serestudiobranding.com/" target="_blank" rel="noopener noreferrer" className="text-[#6b558a] hover:underline font-medium">
+              Ser Estudio Branding
+            </a>
+          </p>
         </div>
       </footer>
       <WhatsAppButton />
