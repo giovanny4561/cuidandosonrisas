@@ -163,6 +163,7 @@ export default function Home() {
                     { icon: 'clinical_notes', text: 'Especialista en odontología de pacientes con patología médica asociada Universidad de Barcelona' },
                     { icon: 'badge', text: 'Diplomado Gestión Integral de Unidades Oncológicas Universidad del Valle' },
                     { icon: 'precision_manufacturing', text: 'Planeación de cirugía implantes y diseño de guías quirúrgicas' },
+                    { icon: 'menu_book', text: 'Docente Universidad del Valle' },
                   ].map((item, i) => (
                     <li key={i} data-gsap="stagger-item" className="flex gap-3 text-sm text-[#6d6475] leading-relaxed">
                       <span aria-hidden="true" className="material-symbols-outlined text-[#6b558a] text-base shrink-0 mt-0.5">{item.icon}</span>
@@ -201,6 +202,7 @@ export default function Home() {
                     { icon: 'corporate_fare', text: 'Especialista en gerencia de empresas U.Rosario' },
                     { icon: 'workspace_premium', text: 'Máster en pacientes oncológicos e inmunocomprometidos Universidad de Barcelona' },
                     { icon: 'account_balance', text: 'Presidente ACOPNE' },
+                    { icon: 'menu_book', text: 'Docente Universidad Javeriana' },
                   ].map((item, i) => (
                     <li key={i} data-gsap="stagger-item" className="flex gap-3 text-sm text-[#6d6475] leading-relaxed">
                       <span aria-hidden="true" className="material-symbols-outlined text-[#6b558a] text-base shrink-0 mt-0.5">{item.icon}</span>

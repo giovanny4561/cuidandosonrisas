@@ -52,7 +52,7 @@ export default function RootLayout({
         {/* Material Symbols con subset exacto de iconos usados (evita cargar la fuente completa de 3.8MB) */}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_balance,arrow_forward,badge,check_circle,clinical_notes,corporate_fare,favorite,location_on,mail,precision_manufacturing,school,volunteer_activism,workspace_premium&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_balance,arrow_forward,badge,check_circle,clinical_notes,corporate_fare,favorite,location_on,mail,menu_book,precision_manufacturing,school,volunteer_activism,workspace_premium&display=swap"
         />
         <script
           type="application/ld+json"
