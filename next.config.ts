@@ -29,22 +29,16 @@ const nextConfig: NextConfig = {
       },
       // Imágenes: caché de 30 días (no immutable porque el filename no tiene hash)
       {
+        source: "/(:path*).webp",
+        headers: [{ key: "Cache-Control", value: "public, max-age=2592000, stale-while-revalidate=86400" }],
+      },
+      {
         source: "/(:path*).png",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=2592000, stale-while-revalidate=86400",
-          },
-        ],
+        headers: [{ key: "Cache-Control", value: "public, max-age=2592000, stale-while-revalidate=86400" }],
       },
       {
         source: "/(:path*).jpg",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=2592000, stale-while-revalidate=86400",
-          },
-        ],
+        headers: [{ key: "Cache-Control", value: "public, max-age=2592000, stale-while-revalidate=86400" }],
       },
       // llms.txt y robots.txt: caché de 1 día
       {

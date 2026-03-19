@@ -23,7 +23,7 @@ export default function Home() {
             <img
               alt="Logo Cuidando Sonrisas"
               className="h-9 md:h-10 w-auto"
-              src="/logo.png"
+              src="/logo.webp"
               width={512}
               height={240}
             />
@@ -102,7 +102,7 @@ export default function Home() {
               <img
                 alt="Profesional de salud especializada en odontología oncológica"
                 className="desaturated-img object-top"
-                src="/hero.png"
+                src="/hero.webp"
                 width={800}
                 height={1000}
                 fetchPriority="high"
@@ -145,7 +145,7 @@ export default function Home() {
                   decoding="async"
                   alt="Daniela Bustamante V., odontóloga especialista en pacientes oncológicos"
                   className="desaturated-img object-top"
-                  src="/daniela.png"
+                  src="/daniela.webp"
                   width={600}
                   height={800}
                 />
@@ -183,7 +183,7 @@ export default function Home() {
                   decoding="async"
                   alt="Angie Nathaly Verdugo R., máster en pacientes oncológicos"
                   className="desaturated-img object-[center_15%]"
-                  src="/angie.png"
+                  src="/angie.webp"
                   width={600}
                   height={800}
                 />
@@ -222,7 +222,7 @@ export default function Home() {
                 decoding="async"
                 alt="Equipo Cuidando Sonrisas"
                 className="desaturated-img"
-                src="/team-photo.png"
+                src="/team-group.webp"
                 width={1200}
                 height={800}
               />
@@ -314,7 +314,7 @@ export default function Home() {
               decoding="async"
               alt="Apoyo y acompañamiento a pacientes oncológicos"
               className="desaturated-img object-top"
-              src="/team.png"
+              src="/team.webp"
               width={800}
               height={1000}
             />
@@ -381,10 +381,10 @@ export default function Home() {
           {/* 2×2 image grid — each wrapped in img-wrap to prevent blend bleeding */}
           <div className="lg:col-span-7 grid grid-cols-2 grid-rows-[auto_auto] gap-0 content-start">
             {[
-              { src: '/why1.png', pos: 'object-[center_22%]', alt: 'Especialista en odontología oncológica en Fundación Santa Fe de Bogotá' },
-              { src: '/why4.png', pos: 'object-[center_25%]', alt: 'Equipo de odontólogas especializadas en pacientes oncológicos' },
-              { src: '/why3b.png', pos: 'object-[center_12%]', alt: 'Equipo de especialistas en odontología oncológica' },
-              { src: '/why2.png', pos: 'object-[center_18%]', alt: 'Especialista en odontología oncológica' },
+              { src: '/why1.webp', pos: 'object-[center_22%]', alt: 'Especialista en odontología oncológica en Fundación Santa Fe de Bogotá' },
+              { src: '/why4.webp', pos: 'object-[center_25%]', alt: 'Equipo de odontólogas especializadas en pacientes oncológicos' },
+              { src: '/why3b.webp', pos: 'object-[center_12%]', alt: 'Equipo de especialistas en odontología oncológica' },
+              { src: '/why2.webp', pos: 'object-[center_18%]', alt: 'Especialista en odontología oncológica' },
             ].map((item, i) => (
               <div key={i} className="img-wrap aspect-square">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -426,7 +426,7 @@ export default function Home() {
               decoding="async"
               alt="Las fundadoras Daniela y Angie, orígenes de Cuidando Sonrisas"
               className="desaturated-img object-[center_65%]"
-              src="/specialists.png"
+              src="/specialists.webp"
               width={800}
               height={1000}
             />
@@ -522,7 +522,7 @@ export default function Home() {
                 loading="lazy"
                 decoding="async"
                 className="h-10 w-auto"
-                src="/logo.png"
+                src="/logo.webp"
                 width={512}
                 height={240}
               />
