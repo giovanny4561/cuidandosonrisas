@@ -75,8 +75,8 @@ export default function Home() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 alt="Profesional de salud especializada en odontología oncológica"
-                className="desaturated-img"
-                src="https://lh3.googleusercontent.com/aida/ADBb0uhTCkP1Nl3v5MAjv_4U-XSLBi7CuCN0ZhvQxIDKZvs2IFo0VtpzNK-i1w319sfFx_TpbV4n1M3ecdoUderWTGj5JcFsyNkLtEbiTdWXsC2pdipK4q0NC8wpMNqhZo-uafJdcx6-iPrRWBZBoqzDRiemO8caNdSM7DEzsCCDVvFakO2sDeTTk0n1amfdIDd-7AatkBhwqQveSKCCNUk3qxntsauFjqnX9pnhFRsdgqOUxI3mpfiHt9Ud0MkATtEUN8qI4UCC0Ag"
+                className="desaturated-img object-top"
+                src="/hero.png"
               />
             </div>
             <div
@@ -92,7 +92,7 @@ export default function Home() {
 
         {/* ── TEAM ── */}
         <section className="bg-white">
-          <div className="p-8 sm:p-12 lg:p-16 bg-[#ebddf7]/40">
+          <div className="px-8 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-24 bg-[#ebddf7]/40">
             <h2
               data-gsap="fade-up"
               className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#323234] font-headline italic"
@@ -119,7 +119,7 @@ export default function Home() {
                   src="/daniela.png"
                 />
               </div>
-              <div className="p-8 lg:p-10 flex flex-col bg-white">
+              <div className="p-8 lg:p-12 flex flex-col justify-center bg-white">
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#6b558a] mb-2">
                   Especialista Principal
                 </span>
@@ -155,7 +155,7 @@ export default function Home() {
                   src="/angie.png"
                 />
               </div>
-              <div className="p-8 lg:p-10 flex flex-col bg-white sm:order-1">
+              <div className="p-8 lg:p-12 flex flex-col justify-center bg-white sm:order-1">
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#6b558a] mb-2">
                   Especialista Principal
                 </span>
@@ -224,7 +224,7 @@ export default function Home() {
         {/* ── SOLUTION ── */}
         <section className="grid grid-cols-1 lg:grid-cols-12">
           <div className="lg:col-span-6 flex flex-col">
-            <div className="p-8 sm:p-12 lg:p-20 flex-grow bg-[#fbf9f9]">
+            <div className="p-8 sm:p-12 lg:p-20 flex-grow flex flex-col justify-between gap-10 bg-[#fbf9f9]">
               <h2 data-gsap="fade-up" className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 tracking-tight text-[#323234] font-headline">
                 Cuidando Sonrisas educa, orienta y acompaña...
               </h2>
@@ -247,6 +247,15 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+              <div data-gsap="fade-up">
+                <a
+                  href="#contacto"
+                  className="btn-primary inline-flex items-center gap-2"
+                >
+                  Solicitar Consultoría
+                  <span aria-hidden="true" className="material-symbols-outlined text-base">arrow_forward</span>
+                </a>
+              </div>
             </div>
             <div className="bg-[#ebddf7]/30 p-8 sm:p-12 lg:p-16">
               <blockquote className="italic text-xl lg:text-2xl font-headline font-semibold text-[#6b558a]/80 border-l-4 border-[#6b558a] pl-8">
@@ -255,15 +264,15 @@ export default function Home() {
               </blockquote>
             </div>
           </div>
-          <div className="img-wrap lg:col-span-6 min-h-[300px] lg:min-h-0">
+          <div className="img-wrap lg:col-span-6 min-h-[300px] lg:min-h-0 lg:max-h-[640px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               data-gsap="img"
               loading="lazy"
               decoding="async"
               alt="Apoyo y acompañamiento a pacientes oncológicos"
-              className="desaturated-img"
-              src="https://lh3.googleusercontent.com/aida/ADBb0ugaNJUOUuNc3xO_uidX-3wInnswmqEPGJnhBuIsya3lfZmp8TkpiYxYv-cIN4VbQ58S0B0Ff_afUmj16Jrh9N_f36Eu1AlrSau34DoVlP-YQKy6gCPb2z-7ZFq27ffAo_6-NTmK61NBhyWKcDro_dwmfN8xeK3oZlYCo5ZxRY5qNSmd3koIzqYH6xOHhY_uYsHl7x6kgBYojzs_ICSibFU___UmBZEmYsg8T1BG1S6cINDk2_y7PyqP2ldT2WGVvIwI3-lBBYk"
+              className="desaturated-img object-top"
+              src="/team.png"
             />
           </div>
         </section>
@@ -274,9 +283,6 @@ export default function Home() {
             <h2 data-gsap="fade-up" className="text-3xl sm:text-4xl font-bold italic font-headline">
               Nuestras Líneas de Acción
             </h2>
-            <span aria-hidden="true" className="hidden md:block text-[10px] opacity-40 uppercase tracking-[0.5em] text-[#6d6475] font-bold">
-              Sistema.04 // Odonto.Onco
-            </span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 bg-white" data-gsap="stagger">
             {[

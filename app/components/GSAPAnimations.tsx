@@ -27,6 +27,7 @@ export default function GSAPAnimations() {
           opacity: 0,
           stagger: 0.12,
           duration: 0.7,
+          clearProps: 'opacity,transform',
         }, '-=0.5')
         .from('[data-gsap="hero-card"]', {
           x: -50,
