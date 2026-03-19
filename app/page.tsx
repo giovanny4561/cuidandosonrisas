@@ -23,7 +23,9 @@ export default function Home() {
             <img
               alt="Logo Cuidando Sonrisas"
               className="h-9 md:h-10 w-auto"
-              src="https://lh3.googleusercontent.com/aida/ADBb0ui77v2VGSdL4HIsryBvTjLlOn0azy482imP-eUJsvkQC5K6YvgZffOQGpBA5Lx2hk8LyFd8uPCLqaYeqDhai1A7gfvcrGn3dbOfFkDfB9mumymepiQ2lZoKU_3ZVIMpDz3aPnlAO2GqJo1p7ypqcZ0k9MvHmPzSBuEOqhLoRJ-D6QJMkhfbOT5zYL81OijmKXz-T6jGBipXtTZOR4ir8WjALMWqdaDSEdDqmmR-JKkhMMsU-2h_4inJrIj3aYRgho5ACEUW-9w"
+              src="/logo.png"
+              width={512}
+              height={240}
             />
           </a>
 
@@ -101,6 +103,8 @@ export default function Home() {
                 alt="Profesional de salud especializada en odontología oncológica"
                 className="desaturated-img object-top"
                 src="/hero.png"
+                width={800}
+                height={1000}
               />
             </div>
             <div
@@ -141,6 +145,8 @@ export default function Home() {
                   alt="Daniela Bustamante V., odontóloga especialista en pacientes oncológicos"
                   className="desaturated-img object-top"
                   src="/daniela.png"
+                  width={600}
+                  height={800}
                 />
               </div>
               <div className="p-8 lg:p-12 flex flex-col justify-center bg-white">
@@ -177,6 +183,8 @@ export default function Home() {
                   alt="Angie Nathaly Verdugo R., máster en pacientes oncológicos"
                   className="desaturated-img object-[center_15%]"
                   src="/angie.png"
+                  width={600}
+                  height={800}
                 />
               </div>
               <div className="p-8 lg:p-12 flex flex-col justify-center bg-white sm:order-1">
@@ -213,7 +221,9 @@ export default function Home() {
                 decoding="async"
                 alt="Equipo Cuidando Sonrisas"
                 className="desaturated-img"
-                src="https://lh3.googleusercontent.com/aida/ADBb0uin3oLm5dsmPgWByLQIgBi56AY3Hi2w1gdAZfY2W4nDNPX5TTRtk0z826WRifUQlSZ6A6ZC4Id6ryk-paQ_fX3i6NcwKDrOEE5tdO3t0ijbytL5e6ZaLQ4J3u1l2kVO52xtygEcjiolO0bM_2OuXf6-WYWoXetrYBTbleVgR-6oPUaW3j2Eo1aGfh5BLHL4bitzakYS8ZV5EQZCoKldqhst5XS1WJHpfNSJUoUCwZKjCzxEFHb6yvJlY-6ZiXUAw57fUPuGKg"
+                src="/team-photo.png"
+                width={1200}
+                height={800}
               />
             </div>
             <div className="lg:col-span-4 p-8 lg:p-12 flex flex-col justify-center bg-[#fbf9f9]">
@@ -304,6 +314,8 @@ export default function Home() {
               alt="Apoyo y acompañamiento a pacientes oncológicos"
               className="desaturated-img object-top"
               src="/team.png"
+              width={800}
+              height={1000}
             />
           </div>
         </section>
@@ -375,7 +387,7 @@ export default function Home() {
             ].map((item, i) => (
               <div key={i} className="img-wrap aspect-square">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img data-gsap="img" loading="lazy" decoding="async" alt={item.alt} className={`desaturated-img ${item.pos}`} src={item.src} />
+                <img data-gsap="img" loading="lazy" decoding="async" alt={item.alt} className={`desaturated-img ${item.pos}`} src={item.src} width={600} height={600} />
               </div>
             ))}
           </div>
@@ -414,6 +426,8 @@ export default function Home() {
               alt="Las fundadoras Daniela y Angie, orígenes de Cuidando Sonrisas"
               className="desaturated-img object-[center_65%]"
               src="/specialists.png"
+              width={800}
+              height={1000}
             />
           </div>
         </section>
@@ -507,7 +521,9 @@ export default function Home() {
                 loading="lazy"
                 decoding="async"
                 className="h-10 w-auto"
-                src="https://lh3.googleusercontent.com/aida/ADBb0ui77v2VGSdL4HIsryBvTjLlOn0azy482imP-eUJsvkQC5K6YvgZffOQGpBA5Lx2hk8LyFd8uPCLqaYeqDhai1A7gfvcrGn3dbOfFkDfB9mumymepiQ2lZoKU_3ZVIMpDz3aPnlAO2GqJo1p7ypqcZ0k9MvHmPzSBuEOqhLoRJ-D6QJMkhfbOT5zYL81OijmKXz-T6jGBipXtTZOR4ir8WjALMWqdaDSEdDqmmR-JKkhMMsU-2h_4inJrIj3aYRgho5ACEUW-9w"
+                src="/logo.png"
+                width={512}
+                height={240}
               />
             </div>
             <p className="text-sm text-[#6d6475] max-w-sm font-medium leading-relaxed">
