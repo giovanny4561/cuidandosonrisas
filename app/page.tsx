@@ -137,7 +137,7 @@ export default function Home() {
             {/* Daniela */}
             <div className="grid grid-cols-1 sm:grid-cols-2 bg-[#f5f3f4]">
               {/* BUG FIX: img-wrap da isolation + overflow-hidden al contenedor */}
-              <div className="img-wrap h-[280px] sm:h-[360px] lg:h-auto lg:min-h-0">
+              <div className="img-wrap h-[240px] sm:h-[300px] lg:h-[360px]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   data-gsap="img"
@@ -176,7 +176,7 @@ export default function Home() {
 
             {/* Angie */}
             <div className="grid grid-cols-1 sm:grid-cols-2 bg-[#f5f3f4]">
-              <div className="img-wrap h-[280px] sm:h-[360px] lg:h-auto lg:min-h-0 sm:order-2">
+              <div className="img-wrap h-[240px] sm:h-[300px] lg:h-[360px] sm:order-2">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   data-gsap="img"
@@ -224,7 +224,7 @@ export default function Home() {
                 decoding="async"
                 alt="Equipo Cuidando Sonrisas"
                 className="desaturated-img"
-                src="/team-group.jpg"
+                src="/team-group.png"
                 width={1200}
                 height={800}
               />
