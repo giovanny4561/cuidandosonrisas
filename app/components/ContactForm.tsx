@@ -25,6 +25,15 @@ export default function ContactForm() {
 
   return (
     <form action={formAction} className="space-y-6" noValidate>
+      {/* Honeypot anti-bot: oculto con CSS, los bots lo rellenan automáticamente */}
+      <input
+        name="website"
+        type="text"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: 0 }}
+      />
       <p className="text-xs font-bold uppercase tracking-widest text-[#6b558a] mb-2">Solicitar información</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div className="space-y-2">
