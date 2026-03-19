@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 
-const WEB3FORMS_KEY = '44d830db-0790-424e-be9f-aa36555f9b48'
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 type Status = 'idle' | 'pending' | 'success' | 'error'
@@ -66,31 +65,26 @@ export default function ContactForm() {
       // Fail open: si Disify falla, se deja pasar
     }
 
-    // Envío a Web3Forms
+    // Envío por SMTP vía API route
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: `Nueva solicitud de ${fields.nombre}`,
-          from_name: 'Cuidando Sonrisas Web',
-          replyto: fields.email,
           nombre: fields.nombre,
-          correo: fields.email,
-          telefono: fields.telefono || 'No indicado',
-          institucion: fields.institucion || 'No indicada',
-          servicio: fields.servicio || 'No seleccionado',
-          mensaje: fields.mensaje || 'Sin mensaje',
-          botcheck: false,
+          email: fields.email,
+          telefono: fields.telefono,
+          institucion: fields.institucion,
+          servicio: fields.servicio,
+          mensaje: fields.mensaje,
         }),
       })
 
       const data = await res.json()
-      if (data.success) {
+      if (res.ok && data.success) {
         setStatus('success')
       } else {
-        setErrorMsg('No se pudo enviar el mensaje. Intenta de nuevo.')
+        setErrorMsg(data.error ?? 'No se pudo enviar el mensaje. Intenta de nuevo.')
         setStatus('error')
       }
     } catch {
@@ -113,15 +107,7 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-      {/* Honeypot anti-bot de Web3Forms */}
-      <input
-        type="checkbox"
-        name="botcheck"
-        style={{ display: 'none' }}
-        tabIndex={-1}
-        aria-hidden="true"
-      />
-      <p className="text-xs font-bold uppercase tracking-widest text-[#6b558a] mb-2">Solicitar información</p>
+<p className="text-xs font-bold uppercase tracking-widest text-[#6b558a] mb-2">Solicitar información</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div className="space-y-2">
           <label htmlFor="nombre" className="data-label text-[#6d6475]">

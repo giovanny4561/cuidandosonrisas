@@ -26,8 +26,8 @@ const securityHeaders = [
       "font-src 'self' https://fonts.gstatic.com",
       // Imágenes locales + data URIs (para íconos SVG inline)
       "img-src 'self' data: blob:",
-      // Vercel Analytics + Web3Forms (envío de formulario) + Disify (detección emails desechables)
-      "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com https://api.web3forms.com https://www.disify.com",
+      // Vercel Analytics + Disify (detección emails desechables)
+      "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com https://www.disify.com",
       // Nadie puede embeber esta página en un iframe
       "frame-ancestors 'none'",
       // Previene inyección de <base> tags
