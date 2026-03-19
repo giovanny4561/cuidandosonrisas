@@ -1,6 +1,8 @@
 import GSAPAnimations from './components/GSAPAnimations'
 import MobileNav from './components/MobileNav'
 import WhatsAppButton from './components/WhatsAppButton'
+import ContactForm from './components/ContactForm'
+import TrackedLink from './components/TrackedLink'
 
 export default function Home() {
   return (
@@ -16,7 +18,7 @@ export default function Home() {
       {/* ── NAV ── */}
       <nav className="bg-[#fbf9f9]/80 backdrop-blur-xl sticky top-0 z-50 shadow-[0_4px_40px_rgba(107,85,138,0.06)]">
         <div className="flex justify-between items-center px-6 md:px-10 py-3">
-          <a href="#" aria-label="Inicio Cuidando Sonrisas">
+          <a href="#main-content" aria-label="Inicio Cuidando Sonrisas">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               alt="Logo Cuidando Sonrisas"
@@ -27,21 +29,31 @@ export default function Home() {
 
           {/* Desktop links */}
           <div className="hidden lg:flex items-center space-x-8">
-            {['Servicios', 'Historia', 'Impacto', 'Contacto'].map((item) => (
+            {[
+              { label: 'Servicios', href: '#servicios' },
+              { label: 'Historia', href: '#historia' },
+              { label: 'Contacto', href: '#contacto' },
+            ].map((item) => (
               <a
-                key={item}
+                key={item.label}
                 className="text-[#6d6475] hover:text-[#6b558a] font-medium transition-colors duration-200 cursor-pointer min-h-[44px] flex items-center"
-                href="#"
+                href={item.href}
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </div>
 
           <div className="flex items-center gap-3">
-            <button className="hidden sm:flex items-center bg-[#6b558a] text-[#fef6ff] px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-all duration-200 active:scale-95 cursor-pointer min-h-[44px]">
+            <TrackedLink
+              href="https://wa.me/573206164740?text=Hola%2C%20quisiera%20solicitar%20una%20consultor%C3%ADa%20con%20Cuidando%20Sonrisas."
+              event="cta_nav_consultoria"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex items-center bg-[#6b558a] text-[#fef6ff] px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-all duration-200 active:scale-95 cursor-pointer min-h-[44px]"
+            >
               Solicitar Consultoría
-            </button>
+            </TrackedLink>
             <MobileNav />
           </div>
         </div>
@@ -54,18 +66,30 @@ export default function Home() {
           <div className="lg:col-span-7 p-8 sm:p-12 lg:p-24 bg-gradient-to-br from-[#d9befb]/25 via-[#fbf9f9] to-[#fbf9f9]">
             <h1
               data-gsap="hero-title"
-              className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight mb-8 lg:mb-12 text-[#323234] font-headline"
+              className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight mb-8 lg:mb-12 text-[#323234] font-headline text-balance [font-feature-settings:'kern'_1,'liga'_1]"
             >
-              La salud oral también hace parte del tratamiento del cáncer
+              La salud oral también impacta el tratamiento del cáncer
             </h1>
             <div data-gsap="hero-body" className="max-w-xl">
-              <p className="text-lg lg:text-xl leading-relaxed font-normal text-[#6d6475] mb-8 lg:mb-12">
-                Educación, prevención y consultoría especializada en odontología
-                oncológica para profesionales, instituciones, pacientes y cuidadores.
+              <p className="text-lg lg:text-xl leading-relaxed font-normal text-[#6d6475] mb-6 lg:mb-8">
+                La falta de manejo odontológico en pacientes oncológicos puede generar
+                complicaciones, interrupciones del tratamiento y afectar su calidad de vida.
               </p>
+              <ul className="space-y-2 mb-8 lg:mb-10">
+                {[
+                  'Prevención de complicaciones orales',
+                  'Educación basada en evidencia científica',
+                  'Acompañamiento a pacientes y equipos de salud',
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-sm text-[#6d6475]">
+                    <span aria-hidden="true" className="material-symbols-outlined text-[#6b558a] text-base shrink-0">check_circle</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
               <div className="flex flex-wrap gap-4" data-gsap="hero-buttons">
-                <button className="btn-primary">Solicitar conferencia</button>
-                <button className="btn-outline">Ver contenidos</button>
+                <TrackedLink href="https://wa.me/573206164740?text=Hola%2C%20quisiera%20solicitar%20una%20conferencia%20o%20consultor%C3%ADa%20con%20Cuidando%20Sonrisas.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F" event="cta_hero_conferencia" target="_blank" rel="noopener noreferrer" className="btn-primary">Solicitar conferencia o consultoría</TrackedLink>
+                <a href="#servicios" className="btn-outline">Ver servicios</a>
               </div>
             </div>
           </div>
@@ -92,15 +116,15 @@ export default function Home() {
 
         {/* ── TEAM ── */}
         <section className="bg-white">
-          <div className="px-8 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-24 bg-[#ebddf7]/40">
+          <div className="px-8 py-10 sm:px-12 sm:py-12 lg:px-16 lg:py-14 bg-[#ebddf7]/40">
             <h2
               data-gsap="fade-up"
               className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#323234] font-headline italic"
             >
-              Nuestro Equipo de Especialistas
+              Especialistas en odontología oncológica y educación en salud
             </h2>
             <p data-gsap="fade-up" className="text-base lg:text-lg text-[#6b558a] font-semibold mt-4">
-              Especialistas en Pacientes Oncológicos, Inmunocomprometidos y Paliativos
+              Formación internacional, experiencia clínica y trayectoria en docencia universitaria
             </p>
           </div>
 
@@ -108,7 +132,7 @@ export default function Home() {
             {/* Daniela */}
             <div className="grid grid-cols-1 sm:grid-cols-2 bg-[#f5f3f4]">
               {/* BUG FIX: img-wrap da isolation + overflow-hidden al contenedor */}
-              <div className="img-wrap aspect-square sm:aspect-auto sm:min-h-[300px]">
+              <div className="img-wrap h-[280px] sm:h-[360px] lg:h-auto lg:min-h-0">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   data-gsap="img"
@@ -144,7 +168,7 @@ export default function Home() {
 
             {/* Angie */}
             <div className="grid grid-cols-1 sm:grid-cols-2 bg-[#f5f3f4]">
-              <div className="img-wrap aspect-square sm:aspect-auto sm:min-h-[300px] sm:order-2">
+              <div className="img-wrap h-[280px] sm:h-[360px] lg:h-auto lg:min-h-0 sm:order-2">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   data-gsap="img"
@@ -208,14 +232,14 @@ export default function Home() {
         <section className="grid grid-cols-1 lg:grid-cols-12">
           <div className="lg:col-span-4 p-8 sm:p-12 lg:p-20 bg-[#ebddf7]">
             <h2 data-gsap="fade-up" className="text-3xl sm:text-4xl font-bold leading-tight italic font-headline text-[#323234]">
-              Muchos pacientes y profesionales desconocen el impacto...
+              Un área crítica del tratamiento oncológico sigue siendo ignorada
             </h2>
           </div>
           <div className="lg:col-span-8 p-8 sm:p-12 lg:p-20 flex flex-col justify-center bg-white">
             <p data-gsap="fade-up" className="text-xl lg:text-3xl font-light leading-relaxed mb-8 text-[#6d6475]">
-              Las complicaciones orales no tratadas pueden retrasar ciclos de
-              quimioterapia o radioterapia, aumentando el riesgo de infecciones
-              sistémicas.
+              Muchos pacientes con cáncer no reciben orientación sobre su salud oral
+              durante su tratamiento. Esto puede generar mucositis oral, infecciones,
+              dolor severo e incluso la suspensión del tratamiento oncológico.
             </p>
             <div data-gsap="line" className="h-1.5 w-24 bg-[#6b558a] rounded-full" />
           </div>
@@ -224,18 +248,22 @@ export default function Home() {
         {/* ── SOLUTION ── */}
         <section className="grid grid-cols-1 lg:grid-cols-12">
           <div className="lg:col-span-7 flex flex-col">
-            <div className="p-8 sm:p-12 lg:p-20 flex-grow flex flex-col justify-between gap-10 bg-[#fbf9f9]">
-              <h2 data-gsap="fade-up" className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 tracking-tight text-[#323234] font-headline">
-                Cuidando Sonrisas educa, orienta y acompaña...
+            <div className="p-8 sm:p-12 lg:p-20 flex flex-col gap-8 bg-[#fbf9f9]">
+              <h2 data-gsap="fade-up" className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#323234] font-headline">
+                Educación especializada en odontología oncológica
               </h2>
-              <p data-gsap="fade-up" className="text-[#6d6475] mb-10 text-base lg:text-lg leading-relaxed">
-                Transformamos la incertidumbre en conocimiento aplicado. Cerramos
-                la brecha entre la oncología y la odontología mediante un enfoque preventivo.
+              <p data-gsap="fade-up" className="text-[#6d6475] text-base lg:text-lg leading-relaxed">
+                Cuidando Sonrisas traduce la evidencia científica en herramientas prácticas
+                para pacientes, profesionales e instituciones de salud. Somos un proyecto
+                liderado por especialistas con formación internacional, experiencia clínica
+                y trayectoria en educación universitaria.
               </p>
               <div className="space-y-4" data-gsap="stagger">
                 {[
-                  'Reducción de complicaciones severas',
-                  'Protocolos basados en evidencia',
+                  'Enfoque basado en evidencia científica',
+                  'Experiencia clínica con pacientes oncológicos',
+                  'Formación docente universitaria',
+                  'Trabajo interdisciplinario en salud',
                 ].map((item) => (
                   <div
                     key={item}
@@ -248,13 +276,16 @@ export default function Home() {
                 ))}
               </div>
               <div data-gsap="fade-up">
-                <a
-                  href="#contacto"
+                <TrackedLink
+                  href="https://wa.me/573206164740?text=Hola%2C%20vi%20la%20informaci%C3%B3n%20del%20equipo%20y%20quisiera%20agendar%20una%20consulta%20con%20Cuidando%20Sonrisas."
+                  event="cta_why_consultoria"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-primary inline-flex items-center gap-2"
                 >
                   Solicitar Consultoría
                   <span aria-hidden="true" className="material-symbols-outlined text-base">arrow_forward</span>
-                </a>
+                </TrackedLink>
               </div>
             </div>
             <div className="bg-[#ebddf7]/30 p-8 sm:p-12 lg:p-16">
@@ -264,7 +295,7 @@ export default function Home() {
               </blockquote>
             </div>
           </div>
-          <div className="img-wrap lg:col-span-5 min-h-[400px] lg:min-h-0">
+          <div className="img-wrap lg:col-span-5 h-[280px] lg:h-auto lg:min-h-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               data-gsap="img"
@@ -278,18 +309,17 @@ export default function Home() {
         </section>
 
         {/* ── LINES OF ACTION ── */}
-        <section>
+        <section id="servicios">
           <div className="p-8 sm:p-12 bg-[#ebddf7] text-[#323234] flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
             <h2 data-gsap="fade-up" className="text-3xl sm:text-4xl font-bold italic font-headline">
-              Nuestras Líneas de Acción
+              ¿Cómo podemos trabajar juntos?
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 bg-white" data-gsap="stagger">
+          <div className="grid grid-cols-1 sm:grid-cols-3 bg-white" data-gsap="stagger">
             {[
-              { icon: 'school', title: 'Conferencias para profesionales', desc: 'Capacitación especializada para odontólogos, médicos y enfermería en protocolos onco-dentales.' },
-              { icon: 'volunteer_activism', title: 'Charlas para pacientes', desc: 'Información clara y accesible para el autocuidado bucal durante las diferentes fases del tratamiento.' },
-              { icon: 'corporate_fare', title: 'Consultoría para instituciones', desc: 'Asesoría estratégica para hospitales, clínicas y fundaciones en la creación de programas dentales.' },
-              { icon: 'devices', title: 'Webinars y educación digital', desc: "Espacios como 'La Voz del Cáncer' y 'Odontología Oncológica LATAM' para conectar saberes." },
+              { icon: 'school', title: 'Conferencias para profesionales de la salud', desc: 'Capacitaciones dirigidas a odontólogos, médicos, enfermeros y equipos clínicos para fortalecer el manejo integral del paciente oncológico.' },
+              { icon: 'volunteer_activism', title: 'Conferencias para pacientes y cuidadores', desc: 'Charlas educativas claras y accesibles sobre el cuidado oral durante el tratamiento del cáncer y la prevención de complicaciones.' },
+              { icon: 'corporate_fare', title: 'Consultoría para instituciones', desc: 'Acompañamiento especializado para hospitales, clínicas y organizaciones en el desarrollo de estrategias y rutas de atención en salud oral para pacientes oncológicos.' },
             ].map((item, i) => (
               <div
                 key={i}
@@ -304,19 +334,29 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <div className="bg-white px-8 py-10 lg:px-12 flex justify-center" data-gsap="fade-up">
+            <TrackedLink href="#contacto" event="cta_servicios_info" className="btn-primary inline-flex items-center gap-2">
+              Solicitar información
+              <span aria-hidden="true" className="material-symbols-outlined text-base">arrow_forward</span>
+            </TrackedLink>
+          </div>
         </section>
 
         {/* ── WHY ── */}
         <section className="grid grid-cols-1 lg:grid-cols-12 bg-[#fbf9f9]">
-          <div className="lg:col-span-5 p-8 sm:p-12 lg:p-20">
-            <h2 data-gsap="fade-up" className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-10 text-[#323234] font-headline">
+          <div className="lg:col-span-5 p-8 sm:p-12 lg:p-14 flex flex-col justify-center lg:py-16">
+            <h2 data-gsap="fade-up" className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-8 text-[#323234] font-headline">
               Por qué Cuidando Sonrisas
             </h2>
-            <div className="space-y-10" data-gsap="stagger">
+            <p data-gsap="fade-up" className="text-sm text-[#6d6475] leading-relaxed mb-8">
+              Trabajamos desde la ciencia, la experiencia y el compromiso con el cuidado integral del paciente.
+            </p>
+            <div className="space-y-6" data-gsap="stagger">
               {[
-                { label: 'Especialización', text: 'Formación internacional específica en el manejo de complicaciones orales oncológicas.' },
-                { label: 'Interdisciplinariedad', text: 'Hablamos el lenguaje de la oncología para integrarnos a los equipos médicos.' },
-                { label: 'Evidencia', text: 'Protocolos clínicos actualizados y validados por la academia.' },
+                { label: 'Formación internacional', text: 'Especialización en odontología oncológica con formación en instituciones de referencia internacional.' },
+                { label: 'Experiencia clínica', text: 'Trabajo directo con pacientes oncológicos en diferentes etapas del tratamiento.' },
+                { label: 'Docencia universitaria', text: 'Trayectoria en educación y formación de profesionales de la salud.' },
+                { label: 'Trabajo interdisciplinario', text: 'Participación activa en entornos hospitalarios y oncológicos.' },
               ].map((item) => (
                 <div key={item.label} data-gsap="stagger-item" className="border-l-4 border-[#6b558a] pl-8">
                   <span className="text-xs font-bold uppercase tracking-widest block mb-3 text-[#6b558a]">{item.label}</span>
@@ -326,36 +366,37 @@ export default function Home() {
             </div>
           </div>
           {/* 2×2 image grid — each wrapped in img-wrap to prevent blend bleeding */}
-          <div className="lg:col-span-7 grid grid-cols-2 grid-rows-2 min-h-[280px] sm:min-h-[400px] lg:min-h-0">
+          <div className="lg:col-span-7 grid grid-cols-2 grid-rows-[auto_auto] gap-0 content-start">
             {[
-              'https://lh3.googleusercontent.com/aida-public/AB6AXuA9EMmH2y_CxXA9tgdlNFBHcyOk9URubTIuxbceueQ1ng3ftNblNSUsKnQXGdC1Ms2cKc04bxAmmMRfRHiDuZPCrhc0J7CfsSMv1LY02D-FiUBnDezBFfaMaKLkkk3Di4HxOBrJ4MPhrYOp5oV8B1u8fu-WHVjdQdeI1JHyQdxM4ChvsUpPJO2OEUlspa910H6w8HjtAAKkdqH4WkdotEDEPXEbiClk7cqlVPK6E8Iy6DMN5gJJKxD9PLufWWYzUTJonYL3m-iH',
-              'https://lh3.googleusercontent.com/aida-public/AB6AXuAr58K3OLOLvEREj0DCPQTeCLyshJirXPRh4oUdRIE-mJnHta96XG4GQQKS02Nz-P_YrZQc5eN8AqQsnqtMrJCns2vPoNOIFOLxHwdCUz8YS7IDccRYVRoXbGYhNgDpq_6m7NJTWd_zyJ5oKdPKokdZZflh1pV06l49-d-eCguMiGEHbhG7O74QbjYCHPQ9Iz7B37Ahl32mJ-lvZNBqIubzXHYqVD7BT4ux_YB88G1-qs86n1cAXRk_0-PPbRwxgqS1sRmUCG0a',
-              'https://lh3.googleusercontent.com/aida-public/AB6AXuDc0AcM6wwE-1Y1SpZ58qNWDrgJuRxbgvc2KV2lVrOLgoOonfM94ywjETpVU51OmPKRXhqyXJMTi-U1zDCquJphLx7jpMrmua1-hWUjwAGdwZNVxniHZZ3TkAOBxiMwXnE_DUO5oXtsPD8RtBfnPvggWypsSjMgQamXfo0s_C5ytSgopyWm9D22bgoPvKz8IAcD9za9wMAIn95JBzviZYwAOubswsiUa-pwu22-zkMpzfK-8xwsKZQ2oCXnnzBjgumdQ7fB9LU7',
-              'https://lh3.googleusercontent.com/aida-public/AB6AXuCTXu9cYFINpK-Ij-cUYxzi0AV24A8oCoW2wSjttXxW0NmR4CB6BeXT5RNqEJjGuNaHeB60WNXO-RSrEA-w6aAYfOFgfSZ5TeiDRchRcGx9Y0skNL2aS2z1ATIV-jucsOHKKQ8Dob-cD0R9XjdaxxX6D0n8pCTYf0jm9lXMsRn4GeNeaz-VLh_rHHA-fuD1OM0IYTtkEAXCSgm1ohJ2l2lWDQc_nwkp8Dr3hoK5GX6m1PB4_ts9m09OSJ9Wk8R3tj7utGYPVUOf',
-            ].map((src, i) => (
-              <div key={i} className="img-wrap">
+              { src: '/why1.png', pos: 'object-[center_22%]', alt: 'Especialista en odontología oncológica en Fundación Santa Fe de Bogotá' },
+              { src: '/why4.png', pos: 'object-[center_25%]', alt: 'Equipo de odontólogas especializadas en pacientes oncológicos' },
+              { src: '/why3b.png', pos: 'object-[center_12%]', alt: 'Equipo de especialistas en odontología oncológica' },
+              { src: '/why2.png', pos: 'object-[center_18%]', alt: 'Especialista en odontología oncológica' },
+            ].map((item, i) => (
+              <div key={i} className="img-wrap aspect-square">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img data-gsap="img" loading="lazy" decoding="async" alt={`Entorno clínico especializado ${i + 1}`} className="desaturated-img h-full" src={src} />
+                <img data-gsap="img" loading="lazy" decoding="async" alt={item.alt} className={`desaturated-img ${item.pos}`} src={item.src} />
               </div>
             ))}
           </div>
         </section>
 
         {/* ── ORIGIN STORY ── */}
-        <section className="grid grid-cols-1 md:grid-cols-2">
-          <div className="bg-[#ebddf7] p-8 sm:p-12 lg:p-24">
-            <h2 data-gsap="fade-up" className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-10 font-headline text-[#323234]">
-              Daniela y Angie: El origen de un compromiso.
+        <section id="historia" className="grid grid-cols-1 md:grid-cols-2 md:h-[560px]">
+          <div className="bg-[#ebddf7] p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+            <h2 data-gsap="fade-up" className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 font-headline text-[#323234]">
+              Una necesidad que se convirtió en propósito
             </h2>
-            <p data-gsap="fade-up" className="text-lg lg:text-xl font-light italic opacity-90 mb-6 font-headline text-[#6d6475]">
-              Cuidando Sonrisas no nació solo en las aulas. Nació del corazón y de la vivencia personal.
+            <p data-gsap="fade-up" className="text-lg lg:text-xl font-light italic opacity-90 mb-4 font-headline text-[#6d6475]">
+              Cuidando Sonrisas nace desde una experiencia personal.
             </p>
-            <p data-gsap="fade-up" className="text-base text-[#6d6475] leading-relaxed max-w-lg mb-12">
-              Ambas fundadoras acompañaron a sus padres en sus batallas contra el cáncer,
-              enfrentando de primera mano el vacío de información sobre la salud oral en esos
-              momentos críticos. Esa experiencia transformó su dolor en propósito.
+            <p data-gsap="fade-up" className="text-base text-[#6d6475] leading-relaxed max-w-lg mb-8">
+              Acompañar a un familiar con cáncer sin recibir orientación sobre su salud oral
+              evidenció una realidad poco visible: la odontología oncológica no estaba integrada
+              en la atención del paciente. Hoy trabajamos para cambiar eso, promoviendo educación,
+              prevención y acompañamiento en cada etapa del proceso.
             </p>
-            <div data-gsap="fade-up" className="pt-8 flex items-center gap-6">
+            <div data-gsap="fade-up" className="flex items-center gap-6">
               <div className="w-14 h-14 bg-[#6b558a] rounded-2xl flex items-center justify-center shrink-0" aria-hidden="true">
                 <span className="material-symbols-outlined text-white text-3xl">favorite</span>
               </div>
@@ -371,8 +412,8 @@ export default function Home() {
               loading="lazy"
               decoding="async"
               alt="Las fundadoras Daniela y Angie, orígenes de Cuidando Sonrisas"
-              className="desaturated-img"
-              src="https://lh3.googleusercontent.com/aida/ADBb0uin3oLm5dsmPgWByLQIgBi56AY3Hi2w1gdAZfY2W4nDNPX5TTRtk0z826WRifUQlSZ6A6ZC4Id6ryk-paQ_fX3i6NcwKDrOEE5tdO3t0ijbytL5e6ZaLQ4J3u1l2kVO52xtygEcjiolO0bM_2OuXf6-WYWoXetrYBTbleVgR-6oPUaW3j2Eo1aGfh5BLHL4bitzakYS8ZV5EQZCoKldqhst5XS1WJHpfNSJUoUCwZKjCzxEFHb6yvJlY-6ZiXUAw57fUPuGKg"
+              className="desaturated-img object-[center_65%]"
+              src="/specialists.png"
             />
           </div>
         </section>
@@ -380,9 +421,9 @@ export default function Home() {
         {/* ── STATS ── */}
         <section className="grid grid-cols-1 sm:grid-cols-3 bg-white border-t-4 border-[#d9befb]">
           {[
-            { value: '90%', label: 'Reducción riesgo mucositis' },
-            { value: '+ Calidad', label: 'Bienestar integral' },
-            { value: '- Estancia', label: 'Hospitalizaciones evitadas' },
+            { value: '↓ Riesgo', label: 'Prevención de complicaciones orales' },
+            { value: '↑ Calidad', label: 'Mejora en la calidad de vida del paciente' },
+            { value: '→ Continua', label: 'Mayor continuidad del tratamiento oncológico' },
           ].map((stat, i) => (
             <div key={i} className={`py-8 px-6 sm:p-12 lg:p-16 flex flex-col items-center justify-center text-center ${i < 2 ? 'sm:border-r sm:border-[#f5f3f4]' : ''}`}>
               <div data-gsap="stat" className="text-5xl sm:text-6xl lg:text-7xl font-extrabold accent-text mb-4 font-headline">
@@ -394,17 +435,17 @@ export default function Home() {
         </section>
 
         {/* ── ECOSYSTEM ── */}
-        <section className="px-6 py-14 sm:p-16 lg:p-20 bg-[#f5f3f4] text-center">
+        <section id="educacion" className="px-6 py-14 sm:p-16 lg:p-20 bg-[#f5f3f4] text-center">
           <h2 data-gsap="fade-up" className="text-3xl sm:text-4xl font-bold tracking-tight mb-10 text-[#323234] font-headline">
-            Acompañamos a todo el ecosistema oncológico
+            Trabajamos con todo el ecosistema de salud
           </h2>
           <div className="flex flex-wrap justify-center gap-3 sm:gap-6" data-gsap="stagger">
             {[
-              'Instituciones Médicas',
-              'Oncólogos & Especialistas',
+              'Clínicas y hospitales',
+              'Centros oncológicos',
               'Fundaciones',
-              'Pacientes y Familias',
-              'Cuidadores',
+              'Universidades',
+              'Profesionales de la salud',
             ].map((tag) => (
               <span
                 key={tag}
@@ -417,95 +458,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── CONTENT ── */}
-        <section className="bg-white">
-          <div className="p-8 sm:p-12 lg:p-16 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <h2 data-gsap="fade-up" className="text-3xl sm:text-4xl font-bold italic font-headline text-[#323234]">
-              Contenido Educativo
-            </h2>
-            <a
-              className="accent-text font-bold uppercase text-xs tracking-widest flex items-center gap-2 hover:underline shrink-0 cursor-pointer min-h-[44px]"
-              href="#"
-            >
-              Explorar Biblioteca{' '}
-              <span aria-hidden="true" className="material-symbols-outlined text-sm">north_east</span>
-            </a>
-          </div>
-          {/* Grid responsive: stacks on mobile, columns on lg */}
-          <div className="grid grid-cols-1 lg:grid-cols-12">
-            {/* Video card */}
-            <div className="lg:col-span-6 relative group bg-[#efedef] overflow-hidden min-h-[300px]">
-              <div className="img-wrap absolute inset-0">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  data-gsap="img"
-                  loading="lazy"
-                  decoding="async"
-                  alt="La Voz del Cáncer, episodio 12 — podcast de odontología oncológica"
-                  className="desaturated-img group-hover:scale-105 transition-transform duration-700"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZOEt1Gcb9fsc6P-cZomvPE6nTyTVDUVde6zey735L5WxRapxbOJUFdfgAYiT1XZ2acR-S2yoUX3c92hlexhSKwD6C3Ja0W8JCssqRCvRZB15-9KxMu9u_EbI8G6bmpRLDPDgr9mHEkZ8NamGb-F-1xCxXtIfWNQUMAGpmNg06PawklEuzT2fj_AyBO4aq5LWi7z_lVib51gv-H1rpik3wvlKfRjhOyjv2tbrVLomgMBUEjkn_UFdUjQAhr9Jx2vLiopvwY98a"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#323234]/80 via-transparent to-transparent p-8 lg:p-12 flex flex-col justify-end text-white">
-                <span className="bg-[#6b558a] text-white text-[9px] font-bold uppercase tracking-widest w-fit px-4 py-1.5 rounded-full mb-4">
-                  Reporte en Video
-                </span>
-                <h3 className="text-2xl lg:text-4xl font-bold italic font-headline leading-tight">
-                  La Voz del Cáncer: Episodio 12
-                </h3>
-              </div>
-            </div>
-
-            {/* Two smaller images — stacked on mobile, grid on lg */}
-            <div className="lg:col-span-3 grid grid-cols-2 lg:grid-cols-1 lg:grid-rows-2">
-              <div className="img-wrap min-h-[200px] lg:min-h-0">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  data-gsap="img"
-                  loading="lazy"
-                  decoding="async"
-                  alt="Presencia en redes sociales de Cuidando Sonrisas"
-                  className="desaturated-img"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuChwp2w2jq7eaDrNSHbANmScoMZVBkJKDJkDrnVfmq60GQ82Eix0T6pZuPAhrk0_oBHGJl9018zvasXj8GsvU0qnkdVQK1m93qMsqXifRt59-Qu0x2aHGttQ_zi-4FyglsFjS3RE3bQo8sC421O1AGHlEzMZVQ6hJSEmviANo9Olg764vTW9HHyZxNgTleHxER8TulM-BWEon7AbdYxrF9QC114uBil9Kx7CUJtihr4fZTStGBqkQjegr4LD3nP_s4MbKhu_o7x"
-                />
-              </div>
-              <div className="img-wrap min-h-[200px] lg:min-h-0" style={{ backgroundColor: '#efedef' }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  data-gsap="img"
-                  loading="lazy"
-                  decoding="async"
-                  alt="Webinar de odontología oncológica LATAM"
-                  className="desaturated-img"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi326iyfdBJ_t7q6mMw8KsBI-Mk1ii5d6V5esBJZoBmshQ_2m5d_bfc9S4xCmXleZtraHDyMudDcGg8Pyj35-WEWhyaUhutCfYRzPNqSyXejUYnU_ptFegAtlPdFExzHC1bV2t-kV1vjtlXR2kIgkczz3cNIxR-UUGcTeyvPWdycMedxoeUFuHxatlIkWa0g22haABlUgXaNo4XaEtYZNGxUMYlenO2O76m29l2Odzq-Z3uYzWOHVLJSVCnUqkSs932pi7a6QU"
-                />
-              </div>
-            </div>
-
-            {/* Quote panel */}
-            <div className="lg:col-span-3 p-8 lg:p-12 bg-[#f5f3f4] flex flex-col justify-between gap-8 min-h-[200px]">
-              <p data-gsap="fade-up" className="text-lg lg:text-xl italic font-light leading-relaxed text-[#6d6475]">
-                &quot;Nuestros espacios de educación digital han alcanzado a más de
-                5,000 profesionales en toda Latinoamérica.&quot;
-              </p>
-              <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#6b558a]">
-                  +5k Comunidad
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* ── CONTACT / FORM ── */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 bg-[#ebddf7]">
+        <section id="contacto" className="grid grid-cols-1 lg:grid-cols-12 bg-[#ebddf7]">
           <div className="lg:col-span-6 p-8 sm:p-12 lg:p-24 flex flex-col justify-center">
             <h2 data-gsap="fade-up" className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-8 leading-tight font-headline text-[#323234]">
-              Solicita una conferencia o consultoría especializada
+              Integra la salud oral en el cuidado del paciente oncológico
             </h2>
             <p data-gsap="fade-up" className="text-base lg:text-lg text-[#6d6475] font-light mb-10">
-              Estamos listas para colaborar con tu institución o brindarte la
-              orientación que necesitas.
+              Lleva educación especializada a tu institución, equipo de salud o comunidad de pacientes.
             </p>
             <div className="space-y-6" data-gsap="stagger">
               {[
@@ -530,74 +491,15 @@ export default function Home() {
           </div>
 
           <div className="lg:col-span-6 p-8 sm:p-12 lg:p-24 bg-white">
-            <form className="space-y-8" noValidate>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                <div className="space-y-2">
-                  <label htmlFor="nombre" className="data-label text-[#6d6475]">
-                    Nombre del Solicitante <span aria-label="requerido" className="text-[#6b558a]">*</span>
-                  </label>
-                  <input
-                    id="nombre"
-                    name="nombre"
-                    required
-                    autoComplete="name"
-                    className="w-full border-b-2 border-[#efedef] focus:border-[#6b558a] focus:outline-none p-3 bg-transparent text-sm transition-colors duration-200 min-h-[44px]"
-                    placeholder="Ej. Dr. Juan Pérez"
-                    type="text"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="email" className="data-label text-[#6d6475]">
-                    Correo Electrónico <span aria-label="requerido" className="text-[#6b558a]">*</span>
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    required
-                    autoComplete="email"
-                    className="w-full border-b-2 border-[#efedef] focus:border-[#6b558a] focus:outline-none p-3 bg-transparent text-sm transition-colors duration-200 min-h-[44px]"
-                    placeholder="ejemplo@correo.com"
-                    type="email"
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="servicio" className="data-label text-[#6d6475]">Tipo de Servicio</label>
-                <select
-                  id="servicio"
-                  name="servicio"
-                  className="w-full border-b-2 border-[#efedef] focus:border-[#6b558a] focus:outline-none p-3 bg-transparent text-sm transition-colors duration-200 min-h-[44px] cursor-pointer appearance-none"
-                >
-                  <option>Conferencia para profesionales</option>
-                  <option>Consultoría institucional</option>
-                  <option>Asesoría para paciente/cuidador</option>
-                </select>
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="mensaje" className="data-label text-[#6d6475]">Mensaje</label>
-                <textarea
-                  id="mensaje"
-                  name="mensaje"
-                  className="w-full border-b-2 border-[#efedef] focus:border-[#6b558a] focus:outline-none p-3 bg-transparent text-sm transition-colors duration-200 resize-none"
-                  placeholder="Cuéntanos cómo podemos ayudarte..."
-                  rows={4}
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full btn-primary py-5 text-sm cursor-pointer"
-              >
-                Enviar Solicitud
-              </button>
-            </form>
+            <ContactForm />
           </div>
         </section>
       </main>
 
       {/* ── FOOTER ── */}
       <footer className="bg-[#f5f3f4]">
-        <div className="px-6 sm:px-8 md:px-10 py-12 sm:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
-          <div className="sm:col-span-2">
+        <div className="px-6 sm:px-8 md:px-10 py-12 sm:py-16 grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-12">
+          <div className="sm:col-span-1">
             <div className="flex items-center gap-2 mb-6">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -609,38 +511,47 @@ export default function Home() {
               />
             </div>
             <p className="text-sm text-[#6d6475] max-w-sm font-medium leading-relaxed">
-              Elevando la odontología oncológica con rigor científico.
-              Acompañamos cada paso de tu proceso con precisión clínica.
+              Cuidando Sonrisas — Odontología oncológica | Educación en salud | Prevención y cuidado integral
             </p>
           </div>
-          <nav aria-label="Índices del sitio">
-            <span className="text-sm font-bold uppercase tracking-widest text-[#6b558a] block mb-5">Índices</span>
+          <nav aria-label="Navegación del sitio">
+            <span className="text-sm font-bold uppercase tracking-widest text-[#6b558a] block mb-5">Navegación</span>
             <ul className="flex flex-col gap-4">
-              {['Servicios', 'Historia', 'Impacto'].map((link) => (
-                <li key={link}>
-                  <a className="text-[#6d6475] hover:text-[#6b558a] transition-colors duration-200 cursor-pointer" href="#">
-                    {link}
+              {[
+                { label: 'Inicio', href: '#main-content' },
+                { label: 'Servicios', href: '#servicios' },
+                { label: 'Historia', href: '#historia' },
+                { label: 'Contacto', href: '#contacto' },
+              ].map((item) => (
+                <li key={item.label}>
+                  <a className="text-[#6d6475] hover:text-[#6b558a] transition-colors duration-200 cursor-pointer" href={item.href}>
+                    {item.label}
                   </a>
                 </li>
               ))}
             </ul>
           </nav>
-          <nav aria-label="Documentación legal">
-            <span className="text-sm font-bold uppercase tracking-widest text-[#6b558a] block mb-5">Legal</span>
+          <div>
+            <span className="text-sm font-bold uppercase tracking-widest text-[#6b558a] block mb-5">Redes sociales</span>
             <ul className="flex flex-col gap-4">
-              {['Privacidad', 'Términos de Servicio', 'Preguntas Frecuentes'].map((link) => (
-                <li key={link}>
-                  <a className="text-[#6d6475] hover:text-[#6b558a] transition-colors duration-200 cursor-pointer" href="#">
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a className="flex items-center gap-2 text-[#6d6475] hover:text-[#6b558a] transition-colors duration-200 cursor-pointer" href="https://www.instagram.com/cuidandosonrisas.co/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a className="flex items-center gap-2 text-[#6d6475] hover:text-[#6b558a] transition-colors duration-200 cursor-pointer" href="https://www.linkedin.com/company/cuidando-sonrisas/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                  LinkedIn
+                </a>
+              </li>
             </ul>
-          </nav>
+          </div>
         </div>
-        <div className="px-6 sm:px-8 md:px-10 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="px-6 sm:px-8 md:px-10 py-6 border-t border-[#e8e4ea] flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-[#6d6475] font-medium text-center sm:text-left">
-            © 2026 Cuidando Sonrisas. Odontología Oncológica Especializada.
+            © 2026 Cuidando Sonrisas. Todos los derechos reservados.
           </p>
         </div>
       </footer>

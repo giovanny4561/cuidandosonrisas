@@ -3,7 +3,11 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
-const links = ['Servicios', 'Historia', 'Impacto', 'Contacto']
+const links = [
+  { label: 'Servicios', href: '#servicios' },
+  { label: 'Historia', href: '#historia' },
+  { label: 'Contacto', href: '#contacto' },
+]
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false)
@@ -35,17 +39,23 @@ export default function MobileNav() {
       >
         {links.map((item) => (
           <a
-            key={item}
-            href="#"
+            key={item.label}
+            href={item.href}
             className="text-[#323234] font-semibold text-xl py-4 border-b border-[#efedef] hover:text-[#6b558a] transition-colors"
             onClick={() => setOpen(false)}
           >
-            {item}
+            {item.label}
           </a>
         ))}
-        <button className="mt-8 bg-[#6b558a] text-[#fef6ff] px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-all cursor-pointer">
+        <a
+          href="https://wa.me/573206164740?text=Hola%2C%20quisiera%20solicitar%20una%20consultor%C3%ADa%20con%20Cuidando%20Sonrisas."
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setOpen(false)}
+          className="mt-8 bg-[#6b558a] text-[#fef6ff] px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-all cursor-pointer text-center"
+        >
           Solicitar Consultoría
-        </button>
+        </a>
       </div>
     </div>
   )
