@@ -43,3 +43,10 @@ next-env.d.ts
 # local dev sessions & claude settings
 /sessions/
 .claude/
+
+# screenshots de desarrollo
+screenshot_*.mjs
+desktop*.png
+mobile*.png
+tablet*.png
+section_*.png
