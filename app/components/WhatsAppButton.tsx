@@ -7,14 +7,14 @@ export default function WhatsAppButton() {
     <FloatingWhatsApp
       phoneNumber="+573206164740"
       accountName="Cuidando Sonrisas"
+      avatar="/team.png"
       statusMessage="Educación, prevención y consultoría"
-      chatMessage="¡Hola! Bienvenido/a a Cuidando Sonrisas. ¿En qué podemos ayudarte? Conferencias, consultoría para instituciones o información general."
+      chatMessage="¡Hola! 👋 ¿En qué podemos ayudarte hoy?"
       placeholder="Escribe tu mensaje aquí..."
       messageDelay={1}
       notification
       notificationDelay={30}
       notificationLoop={2}
-      allowEsc
       buttonStyle={{ bottom: '1.5rem', right: '1.5rem' }}
       chatboxStyle={{ fontFamily: 'Inter, sans-serif' }}
     />
