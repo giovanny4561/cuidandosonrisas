@@ -223,7 +223,7 @@ export default function Home() {
 
         {/* ── SOLUTION ── */}
         <section className="grid grid-cols-1 lg:grid-cols-12">
-          <div className="lg:col-span-6 flex flex-col">
+          <div className="lg:col-span-7 flex flex-col">
             <div className="p-8 sm:p-12 lg:p-20 flex-grow flex flex-col justify-between gap-10 bg-[#fbf9f9]">
               <h2 data-gsap="fade-up" className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 tracking-tight text-[#323234] font-headline">
                 Cuidando Sonrisas educa, orienta y acompaña...
@@ -264,7 +264,7 @@ export default function Home() {
               </blockquote>
             </div>
           </div>
-          <div className="img-wrap lg:col-span-6 min-h-[300px] lg:min-h-0 lg:max-h-[640px]">
+          <div className="img-wrap lg:col-span-5 min-h-[400px] lg:min-h-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               data-gsap="img"
